@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Basics</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    .one{
+        color: red;
+    }
+    .two{
+        background: grey;
+    }
+    .canvas{
+        background-color: bisque;
+        height: 200px;
+        width: 200px;
+        margin: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Vue Basics</h1>
+    <div id="app">
+        <h2>{{ title }}</h2>
+        <div>{{ greet('Good Evening') }}</div>
+        <a :href="url">Youtube</a>
+        <div :class="classes">Classes From Instance</div>
+        <input type="text" :value="name">
+        <p>I earn {{ wage }} pounds per hour</p>
+        <button v-on:click="wage++">Increase wage by 1</button>
+        <button v-on:click="wage--">Decrease wage by 1</button>
+        <button v-on:click="change_wage(100)">Increase wage by 100</button>
+        <button v-on:dblclick="change_wage(200)">Increase wage by 200</button>
+        <button v-on:dblclick="change_wage(-200)">Decrease wage by 200</button>
+        <button @click="log_event">Log click event</button>
+        <div class="canvas" @mousemove="log_coords">{{ coords.x }} {{  coords.y }}</div>
+        <input type="text" @keyup="update_name">
+        <input type="text" @keypress="update_name">
+        <input type="text" v-model="name">
+        <div>
+            <button @click.alt="log_message">ALt Click Me</button>
+            <button @click.shift="log_message">Shift Click Me</button>
+            <a href="http://www.google.com" @click.prevent="log_message">Click Me</a>
+        </div>
+        <p v-if="show_name">Sanjay PJ</p>
+        <p v-else-if="show_age">25</p>
+        <button @click="toggle_name">Toggle Name</button>
+        <ul>
+            <li v-for="item in items">{{ item }}</li>
+        </ul>
+        <div v-for="(ninja, index) in ninjas">
+                <p>{{ index }} {{ ninja.name }}</p>
+                <p>{{ ninja.age }}</p>
+            </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
